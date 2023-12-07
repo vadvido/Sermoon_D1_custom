@@ -1,3 +1,4 @@
+// ó DVAR commects
 /**
  * Marlin 3D Printer Firmware
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
@@ -36,6 +37,7 @@
  * Advanced settings can be found in Configuration_adv.h
  */
 #define CONFIGURATION_H_VERSION 02000801
+// ó in source this is 020000
 
 //===========================================================================
 //============================= Getting Started =============================
@@ -69,8 +71,8 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "creality" // Who made the changes.
-//#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
+#define STRING_CONFIG_H_AUTHOR "creality" // Who made the changes. ó in the source it is Sermoon D1
+//#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes) ó this is enabled in source
 
 /**
  * *** VENDORS PLEASE READ ***
@@ -125,6 +127,7 @@
  */
 //#define SERIAL_PORT_2 -1
 //#define BAUDRATE_2 250000   // Enable to override BAUDRATE
+// ó There is SERIAL_PORT_2 3 defined in source too
 
 /**
  * Select a third serial port on the board to use for communication with the host.
@@ -139,12 +142,12 @@
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_CREALITY_V4
+  #define MOTHERBOARD BOARD_CREALITY_V4 // ó BOARD_CREALITY
 #endif
-
+//ó how is this important? 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Ender-3 V2" 
-
+#define CUSTOM_MACHINE_NAME "Ender-3 V2" // ó "Sermoon D1"
+// ó Rename to Sermoon D1
 
 
 // Printer's unique ID, used by some programs to differentiate between machines.
@@ -173,7 +176,7 @@
     Auto off display  
     rock_20210728
 */
-#define ENABLE_AUTO_OFF_DISPLAY
+#define ENABLE_AUTO_OFF_DISPLAY // ó Not used in source
 
 #if ENABLED(ENABLE_AUTO_OFF_DISPLAY)
   #define TURN_OFF_TIME              1000*60*5    //turn-off time: 30S
@@ -467,6 +470,7 @@
 #define TEMP_BED_WINDOW              1  // (°C) Temperature proximity for the "temperature reached" timer
 #define TEMP_BED_HYSTERESIS          3  // (°C) Temperature proximity considered "close enough" to the target
 
+// ó There is no chamber control.. missing from source
 #define TEMP_CHAMBER_RESIDENCY_TIME 10  // (seconds) Time to wait for chamber to "settle" in M191
 #define TEMP_CHAMBER_WINDOW          1  // (°C) Temperature proximity for the "temperature reached" timer
 #define TEMP_CHAMBER_HYSTERESIS      3  // (°C) Temperature proximity considered "close enough" to the target
@@ -475,16 +479,16 @@
 */
 // Below this temperature the heater will be switched off
 // because it probably indicates a broken thermistor wire.
-#define HEATER_0_MINTEMP   5
+#define HEATER_0_MINTEMP   5 // ó this is 0 in source
 #define HEATER_1_MINTEMP   5
 #define HEATER_2_MINTEMP   5
 #define HEATER_3_MINTEMP   5
 #define HEATER_4_MINTEMP   5
-#define HEATER_5_MINTEMP   5
-#define HEATER_6_MINTEMP   5
-#define HEATER_7_MINTEMP   5
-#define BED_MINTEMP        5
-#define CHAMBER_MINTEMP    5
+#define HEATER_5_MINTEMP   5 
+#define HEATER_6_MINTEMP   5 // ó N/A
+#define HEATER_7_MINTEMP   5 // ó N/A
+#define BED_MINTEMP        5 // ó 0 in source
+#define CHAMBER_MINTEMP    5 // ó N/A
 /*
 设置各个传感器检测最低温度保护，默认5°
 */
@@ -497,18 +501,18 @@
 #define HEATER_3_MAXTEMP 275
 #define HEATER_4_MAXTEMP 275
 #define HEATER_5_MAXTEMP 275
-#define HEATER_6_MAXTEMP 275
-#define HEATER_7_MAXTEMP 275
+#define HEATER_6_MAXTEMP 275 // ó N/A
+#define HEATER_7_MAXTEMP 275 // ó N/A
 #define BED_MAXTEMP      120
-#define CHAMBER_MAXTEMP  60
+#define CHAMBER_MAXTEMP  60 // ó N/A
 
 /**
- * Thermal Overshoot
+ * Thermal Overshoot // ó missing from source, but makes sense
  * During heatup (and printing) the temperature can often "overshoot" the target by many degrees
  * (especially before PID tuning). Setting the target temperature too close to MAXTEMP guarantees
  * a MAXTEMP shutdown! Use these values to forbid temperatures being set too close to MAXTEMP.
  */
-#define HOTEND_OVERSHOOT 15   // (°C) Forbid temperatures over MAXTEMP - OVERSHOOT
+#define HOTEND_OVERSHOOT 15   // (°C) Forbid temperatures over MAXTEMP - OVERSHOOT // ó missing from source
 #define BED_OVERSHOOT    10   // (°C) Forbid temperatures over MAXTEMP - OVERSHOOT
 #define COOLER_OVERSHOOT  2   // (°C) Forbid temperatures closer than OVERSHOOT
 
@@ -621,7 +625,7 @@
  * When set to any value below 255, enables a form of PWM to the chamber heater that acts like a divider
  * so don't use it unless you are OK with PWM on your heater. (See the comment on enabling PIDTEMPCHAMBER)
  */
-#define MAX_CHAMBER_POWER 255 // limits duty cycle to chamber heater; 255=full current
+#define MAX_CHAMBER_POWER 255 // limits duty cycle to chamber heater; 255=full current // ó N/A!?
 
 #if ENABLED(PIDTEMPCHAMBER)
   #define MIN_CHAMBER_POWER 0
@@ -688,8 +692,8 @@
 
 #define THERMAL_PROTECTION_HOTENDS // Enable thermal protection for all extruders
 #define THERMAL_PROTECTION_BED     // Enable thermal protection for the heated bed
-#define THERMAL_PROTECTION_CHAMBER // Enable thermal protection for the heated chamber
-#define THERMAL_PROTECTION_COOLER  // Enable thermal protection for the laser cooling
+#define THERMAL_PROTECTION_CHAMBER // Enable thermal protection for the heated chamber // ó N/A?
+#define THERMAL_PROTECTION_COOLER  // Enable thermal protection for the laser cooling // ó N/A?
 
 //===========================================================================
 //============================= Mechanical Settings =========================
@@ -776,15 +780,15 @@
  *          TMC5130, TMC5130_STANDALONE, TMC5160, TMC5160_STANDALONE
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'L6470', 'L6474', 'POWERSTEP01', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC2209', 'TMC2209_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
-#define X_DRIVER_TYPE  TMC2208_STANDALONE
-#define Y_DRIVER_TYPE  TMC2208_STANDALONE
-#define Z_DRIVER_TYPE  TMC2208_STANDALONE
+#define X_DRIVER_TYPE  TMC2208_STANDALONE // ó not used in source
+#define Y_DRIVER_TYPE  TMC2208_STANDALONE // ó not used in source
+#define Z_DRIVER_TYPE  TMC2208_STANDALONE // ó not used in source
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
 //#define Z2_DRIVER_TYPE A4988
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
-#define E0_DRIVER_TYPE TMC2208_STANDALONE
+#define E0_DRIVER_TYPE TMC2208_STANDALONE // ó not used in source
 //#define E1_DRIVER_TYPE A4988
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
@@ -840,7 +844,7 @@
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {80,80,400,409.5}    //System Calculate data
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 93.0}  //{ 80, 80, 400, 424.9 } normal use
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 93.0}  //{ 80, 80, 400, 424.9 } normal use // ó {80, 80, 400, 92.60} in source
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -849,7 +853,7 @@
  */
 #define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 25 }   // 最大进给率
 /*在任何移动中，X,Y,Z和E方向上的速度（以毫米/秒为单位）将限制在相应的范围内*/
-#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
+#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2 // ó not used in source
 #if ENABLED(LIMITED_MAX_FR_EDITING)
   #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 10, 50 } // ...or, set your own edit limits
 #endif
@@ -860,7 +864,7 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 500, 500, 100, 1000 }  //加速度//{ 500, 500, 100, 1000 }  //加速度
+#define DEFAULT_MAX_ACCELERATION      { 500, 500, 100, 1000 }  //加速度//{ 500, 500, 100, 1000 }  //加速度 // ó { 1000, 1000, 100, 1000 } in source
 /*
 该设置是为了防止打印机丢步，一般保持默认。
 值3000意味着轴可以在一秒钟的运动中从0加速到3000mm/m（50mm/s）
@@ -883,7 +887,7 @@
  */
 
 #define DEFAULT_ACCELERATION          500    // X, Y, Z and E acceleration for printing moves 出丝
-#define DEFAULT_RETRACT_ACCELERATION  800    // E acceleration for retracts  线材回抽
+#define DEFAULT_RETRACT_ACCELERATION  800    // E acceleration for retracts  线材回抽 // ó 1000 in source
 #define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves  不出丝
 /*
 默认最小速度
@@ -898,9 +902,9 @@
  */
 #define CLASSIC_JERK   //转弯时最小速度变化（抖动）
 #if ENABLED(CLASSIC_JERK)
-  #define DEFAULT_XJERK 5.0
-  #define DEFAULT_YJERK 5.0
-  #define DEFAULT_ZJERK  0.3
+  #define DEFAULT_XJERK 5.0 // ó 10.0 in source
+  #define DEFAULT_YJERK 5.0 // ó 10.0 in source
+  #define DEFAULT_ZJERK  0.3 // ó 0.4 in source
 /*
 启动该设置可能会对模型转角的纹路优化（振纹）有所改善
 抖动和加速度一起配合工作。抖动指的是打印机在一瞬间可以发生的速度变化（以mm/s为单位）。也可以
@@ -913,7 +917,7 @@
 
   #define LIMITED_JERK_EDITING        // Limit edit via M205 or LCD to DEFAULT_aJERK * 2
   #if ENABLED(LIMITED_JERK_EDITING)
-    #define MAX_JERK_EDIT_VALUES { 5, 5, 0.3, 3 } // ...or, set your own edit limits
+    #define MAX_JERK_EDIT_VALUES { 5, 5, 0.3, 3 } // ...or, set your own edit limits // ó { 20, 20, 0.6, 10 } in source
   #endif
 #endif
 
@@ -940,7 +944,7 @@
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
-#define S_CURVE_ACCELERATION
+#define S_CURVE_ACCELERATION // ó not user in source
 
 //===========================================================================
 //============================= Z Probe Options =============================
@@ -1106,7 +1110,21 @@
  *     O-- FRONT --+
  */
 // #define NOZZLE_TO_PROBE_OFFSET { -40, -50, 0 }  //(-40,-60,0)
-#define NOZZLE_TO_PROBE_OFFSET { -31.8, -40.5, 0 }
+#define NOZZLE_TO_PROBE_OFFSET { -31.8, -40.5, 0 } // ó { 0, 0, 0 } in source
+
+/* ó this is missing from this file, probably display and consol related
+// Certain types of probes need to stay away from edges
+#define MIN_PROBE_EDGE 30
+
+// X and Y axis travel speed (mm/m) between probes
+#define XY_PROBE_SPEED 3000
+
+// Feedrate (mm/m) for the first approach when double-probing (MULTIPLE_PROBING == 2)
+#define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
+
+// Feedrate (mm/m) for the "accurate" probe of each point
+#define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2)
+*/
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1161,8 +1179,8 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
-#define MULTIPLE_PROBING 2    // Creality BLTouch Improve accuracy
-#define EXTRA_PROBING    1    // Creality BLTouch Improve accuracy
+#define MULTIPLE_PROBING 2    // Creality BLTouch Improve accuracy // ó not used in source
+#define EXTRA_PROBING    1    // Creality BLTouch Improve accuracy // ó not used in source
 
 /**
  * Z probes require clearance when deploying, stowing, and moving between
@@ -1186,8 +1204,8 @@
 #define Z_PROBE_LOW_POINT          -2 // Farthest distance below the trigger-point to go before stopping
 
 // For M851 give a range for adjusting the Z probe offset
-#define Z_PROBE_OFFSET_RANGE_MIN -5 // -10   20210713_rock
-#define Z_AXIS_OFFSET_RANGE_MIN 0   //rock_20211025 修改轴移动界面不能移动到负值，防止撞击
+#define Z_PROBE_OFFSET_RANGE_MIN -5 // -10   20210713_rock // ó -10 in source
+#define Z_AXIS_OFFSET_RANGE_MIN 0   //rock_20211025 修改轴移动界面不能移动到负值，防止撞击 // ó not used in source
 #define Z_PROBE_OFFSET_RANGE_MAX 10
 
 // Enable the M48 repeatability test to test probe accuracy
@@ -1207,7 +1225,7 @@
  * readings with inductive probes and piezo sensors.
  探针时关闭加热：保证更精确的侧脸结果，防止电信号干扰
  */
-#define PROBING_HEATERS_OFF       // Turn heaters off when probing
+#define PROBING_HEATERS_OFF       // Turn heaters off when probing // ó not used in source
 #if ENABLED(PROBING_HEATERS_OFF)
   #define WAIT_FOR_BED_HEATER     // Wait for bed to heat back up between probes (to improve accuracy)
   #define WAIT_FOR_HOTEND         // Wait for hotend to heat back up between probes (to improve accuracy & prevent cold extrude)
@@ -1218,7 +1236,7 @@
 //#define DELAY_BEFORE_PROBING 200  // (ms) To prevent vibrations from triggering piezo sensors
 
 // Require minimum nozzle and/or bed temperature for probing
-//#define PREHEAT_BEFORE_PROBING
+//#define PREHEAT_BEFORE_PROBING // ó missing from source but would make sense to use it
 #if ENABLED(PREHEAT_BEFORE_PROBING)
   #define PROBING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
   #define PROBING_BED_TEMP     50
@@ -1250,7 +1268,7 @@
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
 #define INVERT_X_DIR false
 #define INVERT_Y_DIR false
-#define INVERT_Z_DIR true
+#define INVERT_Z_DIR true // ó false in source, Sermoon has inverse z bed movement
 
 // @section extruder
 
@@ -1261,8 +1279,8 @@
 #define INVERT_E3_DIR false
 #define INVERT_E4_DIR false
 #define INVERT_E5_DIR false
-#define INVERT_E6_DIR false
-#define INVERT_E7_DIR false
+#define INVERT_E6_DIR false // ó N/A
+#define INVERT_E7_DIR false // ó N/A
 
 // @section homing
 
@@ -1276,7 +1294,7 @@
  */
 //#define Z_IDLE_HEIGHT Z_HOME_POS
 
-#define Z_HOMING_HEIGHT  10    // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ...
+#define Z_HOMING_HEIGHT  10    // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ... // ó not used in source
                                   // Be sure to have this much clearance over your Z_MAX_POS to prevent grinding.
 
 //#define Z_AFTER_HOMING  10      // (mm) Height to move to after homing Z
@@ -1290,16 +1308,16 @@
 // @section machine
 
 // The size of the printable area
-#define X_BED_SIZE 220
-#define Y_BED_SIZE 220
+#define X_BED_SIZE 220 // ó 290
+#define Y_BED_SIZE 220 // ó 270
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS 0
-#define Y_MIN_POS 0  //-10  rock_20210713
+#define X_MIN_POS 0 // ó -10
+#define Y_MIN_POS 0  //-10  rock_20210713 // ó -10
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE 
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 250       //250
+#define Z_MAX_POS 250       //250 // ó 320
 
 /**
  * Software Endstops
@@ -1445,8 +1463,7 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-// #define AUTO_BED_LEVELING_BILINEAR
-
+//#define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
@@ -1455,7 +1472,7 @@
  * these options to restore the prior leveling state or to always enable
  * leveling immediately after G28.
  */
-#define RESTORE_LEVELING_AFTER_G28
+#define RESTORE_LEVELING_AFTER_G28 // ó not used in source
 //#define ENABLE_LEVELING_AFTER_G28
 
 /**
@@ -1513,7 +1530,7 @@
 #if EITHER(AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X 4
+  #define GRID_MAX_POINTS_X 4 // ó 3 in source
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Probe along the Y axis, advancing X after each column
@@ -1734,17 +1751,17 @@
 #define EEPROM_SETTINGS     // Persistent storage with M500 and M501
 //#define DISABLE_M503        // Saves ~2700 bytes of PROGMEM. Disable for release!
 #define EEPROM_CHITCHAT       // Give feedback on EEPROM commands. Disable to save PROGMEM.
-#define EEPROM_BOOT_SILENT    // Keep M503 quiet and only give errors during first load
+#define EEPROM_BOOT_SILENT    // Keep M503 quiet and only give errors during first load // ó missing from source
 #if ENABLED(EEPROM_SETTINGS)
   #define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors.
 #endif
 
 #define EEPROM_PLR
 #if ENABLED(EEPROM_PLR)
-  #define PLR_ADDR 800
+  #define PLR_ADDR 800 // ó 100 in source
 #endif 
 
-#define EEPROM_DEMARCATE  //温度标定功能
+#define EEPROM_DEMARCATE  //温度标定功能 // ó missing from source
 #if ENABLED(EEPROM_DEMARCATE)
   #define DEMARCATE_ADDR 1900  //标定数据保存地址
   #define DEMARCATE_NUMBER 4   //标定数据保存长度
@@ -1789,15 +1806,15 @@
 // Preheat Constants - Up to 5 are supported without changes
 //预设两个默认初始化参数默认是PLA和ABS的预设，串口屏不用设置这里。
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 200
-#define PREHEAT_1_TEMP_BED     60
-#define PREHEAT_1_TEMP_CHAMBER 35
+#define PREHEAT_1_TEMP_HOTEND 200 // ó 195
+#define PREHEAT_1_TEMP_BED     60 // ó 45
+#define PREHEAT_1_TEMP_CHAMBER 35 // ó N/A?
 #define PREHEAT_1_FAN_SPEED    255 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
 #define PREHEAT_2_TEMP_HOTEND 240
 #define PREHEAT_2_TEMP_BED    100
-#define PREHEAT_2_TEMP_CHAMBER 35
+#define PREHEAT_2_TEMP_CHAMBER 35 // ó N/A?
 #define PREHEAT_2_FAN_SPEED    255 // Value from 0 to 255
 
 /**
@@ -2010,9 +2027,9 @@
 #define DISPLAY_CHARSET_HD44780 JAPANESE
 
 /**
- * Info Screen Style (0:Classic, 1:Průša)
+ * Info Screen Style (0:Classic, 1:Prusa)
  *
- * :[0:'Classic', 1:'Průša']
+ * :[0:'Classic', 1:'Prusa']
  */
 #define LCD_INFO_SCREEN_STYLE 0
 
@@ -2023,6 +2040,7 @@
  * you must uncomment the following option or it won't work.
  */
 #define SDSUPPORT
+// ó #define SDIO_SUPPORT used in source
 
 /**
  * SD CARD: ENABLE CRC
@@ -2092,7 +2110,7 @@
 //
 // Add individual axis homing items (Home X, Home Y, and Home Z) to the LCD menu.
 //
-#define INDIVIDUAL_AXIS_HOMING_MENU
+#define INDIVIDUAL_AXIS_HOMING_MENU // ó nor used in source
 
 //
 // SPEAKER/BUZZER
@@ -2819,7 +2837,7 @@
  * Set this manually if there are extra servos needing manual control.
  * Set to 0 to turn off servo support.
  */
-#define NUM_SERVOS 1 // Servo index starts with 0 for M280 command
+#define NUM_SERVOS 1 // Servo index starts with 0 for M280 command // ó not used in source
 
 // (ms) Delay  before the next move will start, to give the servo time to reach its target angle.
 // 300ms is a good value but you can try less delay.
